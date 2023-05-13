@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from "react";
+import "./App.css";
+import ReactHooks from "./Component/ReactHooks";
+import { View } from "react-native/types";
+import { Pressable } from "react-native/types";
 
-export default function App() {
+function App() {
+  [show, setShow] = useState(true);
+  hideComponent = () => {
+    setShow(false);
+  };
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View className="App">
+      <Pressable onPress={hideComponent()}>
+        <Text>Hide Component</Text>
+      </Pressable>
+      {show && <ReactHooks />}
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
