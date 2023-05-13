@@ -1,13 +1,15 @@
 import { useState } from "react";
-import "./App.css";
+import React from "react";
 import ReactHooks from "./Component/ReactHooks";
-import { View } from "react-native/types";
-import { Pressable } from "react-native/types";
+import { Pressable, Text, View } from "react-native";
 
 function App() {
-  [show, setShow] = useState(true);
+  const [show, setShow] = useState(true);
   hideComponent = () => {
     setShow(false);
+  };
+  showComponent = () => {
+    setShow(true);
   };
   return (
     <View className="App">
@@ -15,6 +17,9 @@ function App() {
         <Text>Hide Component</Text>
       </Pressable>
       {show && <ReactHooks />}
+      <Pressable onPress={showComponent()}>
+        <Text>Show Component</Text>
+      </Pressable>
     </View>
   );
 }
